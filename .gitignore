@@ -1,1 +1,4 @@
 /data/*
+*catboost_info
+*pkl
+*csv
