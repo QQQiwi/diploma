@@ -17,6 +17,9 @@ verification by specialists.
 # Repository Structure
 
 ```
+|-- data/data_1 (2020)/cdf
+    |-- WINDacr2020.xlsx
+    |-- WINDnotacr2020.xlsx
 |-- src
     |-- experiments
         |-- baseline
