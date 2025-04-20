@@ -1,16 +1,20 @@
-# Вступление
+# Introduction
 
-В данном репозитории представлена моя исследовательская работа на тему: **Обнаружение аномалий в мультивариативных временных рядах методами искусственного интеллекта**.
+This repository presents my research work on the topic: **Detection of anomalies
+in multivariate time series using artificial intelligence methods**.
 
-Данные, использованные в рамках исследования, являются данными спутника Wind от
-NASA и общедоступны по следующей ссылке:
+The data used in this research comes from NASA's Wind satellite and is publicly
+available at the following link:
 https://cdaweb.gsfc.nasa.gov/pub/data/wind/waves/wav_h1/2020/
 
-Исследование произведено совместно с астрофизиками базовой кафедры физики космоса из Института Космических Исследований Российской Академии Наук
+The research was conducted in collaboration with astrophysicists from the Basic
+Department of Space Physics at the Space Research Institute of the Russian
+Academy of Sciences.
 
-Данное исследование пока что не имеет научных публикаций и требуется в дополнительной проверке специалистами.
+This research does not yet have scientific publications and requires additional
+verification by specialists.
 
-# Структура репозитория
+# Repository Structure
 
 ```
 |-- src
@@ -36,144 +40,151 @@ https://cdaweb.gsfc.nasa.gov/pub/data/wind/waves/wav_h1/2020/
     |-- diploma.tex
 ```
 
-# Инструкция по воспроизведению результатов исследования
+# Instructions for Reproducing Research Results
 
-Данная инструкция описывает процесс воспроизведения результатов исследования,
-представленного в данном репозитории. Инструкция содержит пошаговое руководство
-по запуску всех этапов обработки данных, обучения моделей и тестирования
-результатов.
+These instructions describe the process of reproducing the research results
+presented in this repository. The instructions contain a step-by-step guide for
+launching all stages of data processing, model training, and testing results.
 
-## Подготовка рабочей среды
+## Preparing the Working Environment
 
-### Клонирование репозитория
+### Cloning the Repository
 
-Для начала необходимо клонировать репозиторий с исходным кодом:
+First, you need to clone the repository with the source code:
 
 ```bash
 git clone https://github.com/QQQiwi/diploma.git
 cd diploma
 ```
 
-### Установка зависимостей
+### Installing Dependencies
 
-Перед запуском скриптов необходимо установить все требуемые зависимости. В репозитории может быть файл requirements.txt, который содержит список необходимых библиотек:
+Before running the scripts, you need to install all required dependencies. The
+repository may contain a requirements.txt file with a list of necessary
+libraries:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Если данного файла нет в репозитории, рекомендуется установить следующие основные библиотеки для работы с данными и обучения моделей:
+If this file is not available in the repository, it is recommended to install
+the following basic libraries for working with data and training models:
 
 ```bash
 pip install numpy pandas matplotlib scikit-learn transformers spacepy
 ```
 
-## Этапы воспроизведения результатов
+## Steps to Reproduce Results
 
-Программный код, который необходимо будет выполнять, расположен в директории
-`text\code`. Необходимо изучить главные функции каждого скрипта, так как
-исходные данные для корректного выполнения программного кода нужно назвать
-определенным образом. Основные фрагменты кода скриптов содержат подробные
-описания используемых функций.
+The code that needs to be executed is located in the `text\code` directory. It
+is necessary to study the main functions of each script, as the source data for
+correct execution of the code must be named in a specific way. The main code
+fragments of the scripts contain detailed descriptions of the functions used.
 
-### Предварительная обработка данных
+### Data Preprocessing
 
-Первым шагом является преобразование исходных данных из формата CDF в CSV:
+The first step is to convert the original data from CDF format to CSV:
 
 ```bash
 python preprocessing.py
 ```
 
-Этот скрипт выполняет следующие задачи:
-- Чтение исходных файлов в формате CDF
-- Извлечение необходимых параметров и значений
-- Преобразование данных в формат CSV
-- Сохранение обработанных данных для дальнейшего использования
+This script performs the following tasks:
+- Reading source files in CDF format
+- Extracting necessary parameters and values
+- Converting data to CSV format
+- Saving processed data for further use
 
-### Обработка данных и подготовка выборок
+### Data Processing and Sample Preparation
 
-После преобразования данных необходимо выполнить их обработку, балансировку и разделение на обучающую и тестовую выборки:
+After converting the data, it is necessary to process, balance, and divide it
+into training and test samples:
 
 ```bash
 python processing.py
 ```
 
-Данный скрипт выполняет:
-- Загрузку преобразованных данных из CSV-файлов
-- Очистку данных от выбросов и некорректных значений
-- Балансировку выборки для равномерного представления классов
-- Разделение данных на обучающую и тестовую выборки
-- Сохранение подготовленных наборов данных
+This script performs:
+- Loading converted data from CSV files
+- Cleaning data from outliers and incorrect values
+- Balancing the sample for uniform class representation
+- Dividing data into training and test samples
+- Saving prepared datasets
 
-### Создание спектрограмм для алгоритмов компьютерного зрения
+### Creating Spectrograms for Computer Vision Algorithms
 
-Для использования алгоритмов компьютерного зрения необходимо создать спектрограммы:
+To use computer vision algorithms, it is necessary to create spectrograms:
 
 ```bash
 python spectrograms.py
 ```
 
-Этот скрипт выполняет:
-- Загрузку предварительно обработанных данных
-- Преобразование временных рядов в спектрограммы
-- Создание и сохранение набора данных для обучения моделей компьютерного зрения
+This script performs:
+- Loading preprocessed data
+- Converting time series to spectrograms
+- Creating and saving a dataset for training computer vision models
 
-### Обучение и тестирование классических моделей машинного обучения
+### Training and Testing Classical Machine Learning Models
 
-Для запуска процесса обучения и тестирования классических моделей машинного обучения используется скрипт:
+To start the process of training and testing classical machine learning models,
+use the script:
 
 ```bash
 python classic.py
 ```
 
-Этот файл содержит код для:
-- Загрузки подготовленных данных
-- Обучения различных моделей машинного обучения
-- Оценки качества моделей
-- Визуализации результатов и сохранения метрик
+This file contains code for:
+- Loading prepared data
+- Training various machine learning models
+- Evaluating model quality
+- Visualizing results and saving metrics
 
-### Обучение и тестирование моделей компьютерного зрения
+### Training and Testing Computer Vision Models
 
-Заключительный этап включает обучение и тестирование моделей компьютерного зрения:
+The final stage includes training and testing computer vision models:
 
 ```bash
 python cv.py
 ```
 
-Данный скрипт выполняет:
-- Загрузку набора данных со спектрограммами
-- Обучение моделей компьютерного зрения
-- Оценку качества моделей
-- Визуализацию результатов и сохранение метрик
+This script performs:
+- Loading the dataset with spectrograms
+- Training computer vision models
+- Evaluating model quality
+- Visualizing results and saving metrics
 
-## Анализ результатов
+## Results Analysis
 
-После выполнения всех этапов обработки данных и обучения моделей, результаты работы каждого скрипта будут сохранены в соответствующих директориях репозитория. Вы можете проанализировать полученные результаты, сравнив их с описанными в тексте работы, который также доступен в репозитории.
+After completing all stages of data processing and model training, the results
+of each script will be saved in the corresponding directories of the repository.
+You can analyze the obtained results by comparing them with those described in
+the text of the work, which is also available in the repository.
 
-## Возможные проблемы и их решение
+## Possible Problems and Their Solutions
 
-При возникновении проблем с воспроизведением результатов рекомендуется:
-- Проверить актуальность версий используемых библиотек
-- Убедиться в доступности всех необходимых исходных данных
-- Обратиться к документации в репозитории или к автору работы
+If you encounter problems reproducing the results, it is recommended to:
+- Check the current versions of the libraries used
+- Ensure all necessary source data is available
+- Refer to the documentation in the repository or contact the author of the work
 
-Следуя данной инструкции, вы сможете полностью воспроизвести результаты исследования, представленного в репозитории.
+By following these instructions, you will be able to fully reproduce the
+research results presented in the repository.
 
-# План работы над данным исследованием в рамках дипломной работы
+# Research Work Plan for the Diploma
 
-1. Обзор литературы по теме обнаружения аномалий в мультивариативных временных рядах.
-2. Изучение методов обнаружения аномалий с использованием искусственного интеллекта и выбор наиболее перспективных для моей задачи.
-3. Подготовка данных, применив дополнительные методы предобработки, такие как нормализация и устранение выбросов.
-4. Первые эксперименты для обнаружения аномалий в данных.
-5. Проведение сравнение производительности различных моделей на данных.
-6. Выполнение гиперпараметрической оптимизации (GridSearch) для улучшения производительности выбранных моделей.
-7. Определение лучшей модели.
-8. Визуализация данных и сведение задачи к CV.
-9. Тот же ресерч, эксперименты с моделями и определение лучшей, но в рамках CV.
-10. Попытка улучшение качества: аугментация данных, изменение других параметров предобработки моделей.
-11. Заключительные главы диплома, описывающие методику, результаты и обсуждение.
-12. Завершение написания практической части диплома.
-13. Оформление работы, подготовка списка литературы, таблиц и рисунков.
-14. Подготовка презентации для защиты.
-15. Завершение работы над текстом, отдача на финальные правки.
-16. Проверка и оформление работы.
+1. Literature review on the topic of anomaly detection in multivariate time series.
+2. Study of anomaly detection methods using artificial intelligence and selection of the most promising ones for my task.
+3. Data preparation, applying additional preprocessing methods such as normalization and outlier removal.
+4. Initial experiments for anomaly detection in the data.
+5. Comparing the performance of different models on the data.
+6. Performing hyperparameter optimization (GridSearch) to improve the performance of selected models.
+7. Determining the best model.
+8. Data visualization and reduction of the task to CV (Computer Vision).
+9. The same research, experiments with models, and determination of the best one, but within the CV framework.
+10. Attempting to improve quality: data augmentation, changing other preprocessing parameters of the models.
+11. Final chapters of the thesis describing methodology, results, and discussion.
+12. Completion of the practical part of the thesis.
+13. Formatting the work, preparing the bibliography, tables, and figures.
+14. Preparing a presentation for the defense.
+15. Finishing work on the text, submitting for final edits.
+16. Checking and formatting the work
